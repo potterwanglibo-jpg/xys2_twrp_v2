@@ -56,6 +56,22 @@ jobs:
           rm -rf vendor/omni/build
           ls vendor/omni/build 2>/dev/null && echo "BUILD DIR STILL EXISTS" || echo "OK: vendor/omni/build removed"
 
+      - name: Patch recovery ramdisk rsync (clear vendor dir, avoid symlink conflict)
+        run: |
+          cd twrp
+          python3 - <<'EOF'
+          p = 'build/make/core/Makefile'
+          s = open(p).read()
+          old = 'rsync -a --exclude=sdcard'
+          new = 'rm -rf $(TARGET_RECOVERY_ROOT_OUT)/vendor; rsync -a --exclude=sdcard'
+          if old in s:
+              s = s.replace(old, new, 1)
+              open(p, 'w').write(s)
+              print('PATCHED: vendor cleanup inserted before recovery ramdisk rsync')
+          else:
+              print('WARN: pattern not found, no patch applied')
+          EOF
+
       - name: Build recovery
         run: |
           cd twrp
