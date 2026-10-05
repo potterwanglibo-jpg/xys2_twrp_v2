@@ -52,7 +52,7 @@ jobs:
       - name: Clone vendor/omni and fix build conflict
         run: |
           cd twrp
-          git clone https://github.com/TeamWin/android_vendor_omni.git vendor/omni -b android-11
+          git clone https://github.com/omnirom/android_vendor_omni.git vendor/omni -b android-11
           rm -rf vendor/omni/build
           ls vendor/omni/build 2>/dev/null && echo "BUILD DIR STILL EXISTS" || echo "OK: vendor/omni/build removed"
 
