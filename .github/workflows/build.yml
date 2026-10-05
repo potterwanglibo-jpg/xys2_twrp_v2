@@ -16,7 +16,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y git python3-is-python3 git-lfs rsync liblz4-tool bc bison build-essential ccache curl flex g++ gcc imagemagick libc6-dev libgl1-mesa-dev libglu1-mesa-dev libncurses-dev libreadline-dev libstdc++6 libxml2-utils lzop pngcrush schedtool squashfs-tools unzip x11proto-core-dev xsltproc zip zlib1g-dev lib32ncurses-dev lib32z1-dev libssl-dev
+          sudo apt-get install -y git python-is-python3 git-lfs rsync liblz4-tool bc bison build-essential ccache curl flex g++ gcc imagemagick libc6-dev libgl1-mesa-dev libglu1-mesa-dev libncurses-dev libreadline-dev libstdc++6 libxml2-utils lzop pngcrush schedtool squashfs-tools unzip x11proto-core-dev xsltproc zip zlib1g-dev lib32ncurses-dev lib32z1-dev libssl-dev
           git lfs install
 
       - name: Setup repo
